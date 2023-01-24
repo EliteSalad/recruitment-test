@@ -1,0 +1,64 @@
+ public string connectionString =
+           // "Data Source=localDB)sqlite to list c#C:\\Users\\xavma\\OneDrive\\Documents\\GitHub\\recruitment-test-laptop\\recruitment-test\\SqliteDB.db";
+            "./SqliteDB.db";
+        public SqliteConnection connection;
+        public SqliteCommand command;
+        
+        public ListController()
+        {
+            //connection = new SqliteConnection(connectionString);
+            //connection.Open();
+
+            //string stm = "SELECT * FROM Employees LIMIT 5";
+            //var cmd = new SqliteCommand(stm, connection);
+            //SqliteDataReader reader = cmd.ExecuteReader();
+            //while (reader.Read())
+            //{
+            //    Console.WriteLine(reader.GetString(0));
+            //}
+            LoadPeopleList();
+
+        }
+
+        public void LoadPeopleList()
+        {
+            //Establish link to the database
+            var connectionStringBuilder = new SqliteConnectionStringBuilder();
+            using(var connection = new SqliteConnection(connectionStringBuilder.ConnectionString))
+            {
+                connection.Open();
+
+                //Read data from data base
+                var selectedCmd = connection.CreateCommand();
+                selectedCmd.CommandText = "SELECT * FROM Employees";
+
+                using (var reader = selectedCmd.ExecuteReader())
+                {
+                    while(reader.Read())                        //while iterating through database
+                    {
+                        var message = reader.GetString(0);      //get the first column of the database
+                        Console.WriteLine(message);             //write results to console
+                    }
+                }
+            }
+        }
+
+        private void RefreshList()
+        {
+
+        }
+
+        public void AddEmployee()
+        {
+
+        }
+
+        public void RemoveEmploye()
+        {
+
+        }
+
+        public void ModifyList()
+        {
+
+        }
