@@ -43,22 +43,53 @@
             }
         }
 
-        private void RefreshList()
-        {
+        }
+        const inputText = document.querySelector('#text');
+        const addButton = document.querySelector('#btn-list');
+        const list = document.querySelector('.container ul');
+        addButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("push button worked")
+            if (inputText.value != "") {
+                e.preventDefault();
+                //create li
+                const myLi = document.createElement('li');
+                myLi.innerHTML = inputText.value;
+                list.appendChild(myLi);
+            }
+        }
+        );
 
+                const [employeeName, setEmployeeName] = useState("");
+        const [employeeValue, setEmployeeValue] = useState("");
+
+        const [employees, setEmployees] = useState([items]);
+        const handleSubmit = (event) => {
+            event.preventDefault();
+            console.log("buttons work");
+            alert("Employee details are " + employeeName + " " + employeeValue);
+            setEmployeeName('');
+            setEmployeeValue('');
+            //setEmployees(currentEmployees => [...currentEmployees, employeeName + " " + employeeValue])
         }
 
-        public void AddEmployee()
-        {
+                                <input type="text" value={employeeName} name="text" id="text" required onChange={(e) => setEmployeeName(e.target.value)} />
+                        <input type="number" value={employeeValue} name="number" id="number" required onChange={(e) => setEmployeeValue(e.target.value)} />
 
+                        //tried adding event listener didn't work
+                                const addButton = document.querySelector('#btn-list');
+        addButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("button working through dom")
         }
 
-        public void RemoveEmploye()
-        {
-
-        }
-
-        public void ModifyList()
-        {
-
-        }
+            //SaveNewName(e) {
+    //    e.preventDefault();
+    //    console.log("SaveNewNameCalled")
+    //    console.log(this.state.items)
+    //    this.setState({
+    //        items: [...items, {name: "test", value: 2318}],
+    //    })
+    //    console.log(this.state.items)
+    //}
+        );
